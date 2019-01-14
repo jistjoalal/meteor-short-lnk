@@ -4,23 +4,28 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import Signup from '../ui/Signup';
-import Link from '../ui/Link';
+import Links from '../ui/Links';
 import NotFound from '../ui/NotFound';
 import Login from '../ui/Login';
 
-// basic auth
+// AUTHENTICATION
+const unauthenticatedPages = ['/', '/signup'];
+const authenticatedPages = ['/links']
+// logged in + public => /links
 const onEnterPublicPage = Component => {
   if (Meteor.userId()) {
     return <Redirect to="/links" />;
   }
   return <Component />
 }
+// logged out + private => /
 const onEnterPrivatePage = Component => {
   if (!Meteor.userId()) {
     return <Redirect to="/" />;
   }
   return <Component />
 }
+// called in client/main.js 
 export const onAuthChange = isAuthenticated => {
   const pathName = history.location.pathname;
   const isUnauthenticatedPage = unauthenticatedPages.includes(pathName);
@@ -33,7 +38,7 @@ export const onAuthChange = isAuthenticated => {
   }
 }
 
-// routes
+// ROUTES
 const history = createBrowserHistory();
 export const AppRouter = () => (
   <Router history={history}>
@@ -42,13 +47,9 @@ export const AppRouter = () => (
       <Route path="/" exact render={() => onEnterPublicPage(Login)} />
       <Route path="/signup" render={() => onEnterPublicPage(Signup)} />
       {/* Private */}
-      <Route path="/links" render={() => onEnterPrivatePage(Link)} />
+      <Route path="/links" render={() => onEnterPrivatePage(Links)} />
       {/* Generic */}
       <Route component={NotFound} />
     </Switch>
   </Router>
 );
-
-// redirects
-const unauthenticatedPages = ['/', '/signup'];
-const authenticatedPages = ['/links']

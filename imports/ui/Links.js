@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 
-class Link extends Component {
+class Links extends Component {
   render() {
     return (
       <React.Fragment>
-        <p>link component</p>
+        <p>links component</p>
         <button onClick={this.logout}>Logout</button>
       </React.Fragment>
     );
@@ -16,4 +16,4 @@ class Link extends Component {
   }
 }
 
-export default withRouter(Link);
+export default withRouter(Links);

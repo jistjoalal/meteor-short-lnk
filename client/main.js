@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom';
 
 import { AppRouter, onAuthChange } from '../imports/routes/routes';
 
+import { Links } from '../imports/api/links';
+
 Tracker.autorun(() => {
   const isAuthenticated = !!Meteor.userId();
   onAuthChange(isAuthenticated);  

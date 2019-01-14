@@ -4,7 +4,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import Signup from '../ui/Signup';
-import Links from '../ui/Links';
+import Link from '../ui/Link';
 import NotFound from '../ui/NotFound';
 import Login from '../ui/Login';
 
@@ -47,7 +47,7 @@ export const AppRouter = () => (
       <Route path="/" exact render={() => onEnterPublicPage(Login)} />
       <Route path="/signup" render={() => onEnterPublicPage(Signup)} />
       {/* Private */}
-      <Route path="/links" render={() => onEnterPrivatePage(Links)} />
+      <Route path="/links" render={() => onEnterPrivatePage(Link)} />
       {/* Generic */}
       <Route component={NotFound} />
     </Switch>

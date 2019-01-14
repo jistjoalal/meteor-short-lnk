@@ -15,6 +15,12 @@ class Signup extends Component {
     const email = this.refs.email.value.trim();
     const password = this.refs.password.value.trim();
 
+    if (password.length < 9) {
+      return this.setState({
+        error: 'Password must be more than 8 characters',
+      });
+    }
+
     Accounts.createUser({ email, password }, err => {
       if (err) {
         this.setState({
@@ -37,7 +43,7 @@ class Signup extends Component {
 
         { !this.state.error ? null : <p>{this.state.error}</p> }
 
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} noValidate>
           <input type="email" ref="email" name="email" placeholder="Email" />
           <input type="password" ref="password" name="password" placeholder="Password" />
           <button>Create Account</button>

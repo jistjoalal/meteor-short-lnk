@@ -29,9 +29,12 @@ const history = createBrowserHistory();
 const AppRouter = () => (
   <Router history={history}>
     <Switch>
+      {/* Public */}
       <Route path="/" exact render={() => onEnterPublicPage(Login)} />
       <Route path="/signup" render={() => onEnterPublicPage(Signup)} />
+      {/* Private */}
       <Route path="/links" render={() => onEnterPrivatePage(Link)} />
+      {/* Generic */}
       <Route component={NotFound} />
     </Switch>
   </Router>

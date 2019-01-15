@@ -15,7 +15,5 @@ Tracker.autorun(() => {
 // render
 Meteor.startup(() => {
   ReactDOM.render(<AppRouter />, document.getElementById('app'));
-  Meteor.call('addNumbers', 33, 4, (err, res) => {
-    console.log('addNumbers args:', err, res);
-  });
+  Meteor.call('links.insert', 'ouch');
 });

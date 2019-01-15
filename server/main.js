@@ -7,6 +7,7 @@ import '../imports/startup/simple-schema-configuration';
 
 Meteor.startup(() => {
   WebApp.connectHandlers.use((req, res, next) => {
+    // remove '/' from url
     const _id = req.url.slice(1);
     const link = Links.findOne({ _id });
 

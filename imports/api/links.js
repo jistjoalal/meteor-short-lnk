@@ -16,24 +16,20 @@ Meteor.methods({
     if (!this.userId) throw new Meteor.Error('not-authorized');
 
     // schema validation
-    try {
-      new SimpleSchema({
-        url: {
-          label: 'Your Link',
-          type: String,
-          regEx: SimpleSchema.RegEx.Url,
-        },
-        userId: {
-          type: String,
-          regEx: SimpleSchema.RegEx.Id,
-        },
-      }).validate({
-        url,
-        userId: this.userId,
-      });
-    } catch(e) {
-      throw new Meteor.Error(400, e.message);
-    }
+    new SimpleSchema({
+      url: {
+        label: 'Your Link',
+        type: String,
+        regEx: SimpleSchema.RegEx.Url,
+      },
+      userId: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id,
+      },
+    }).validate({
+      url,
+      userId: this.userId,
+    });
 
     // insert into db
     Links.insert({

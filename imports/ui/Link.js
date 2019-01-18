@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import LinksList from './LinksList.js';
 import PrivateHeader from './PrivateHeader';
@@ -8,7 +8,9 @@ import LinksListFilters from './LinksListFilters';
 export default Link = props =>
   <>
     <PrivateHeader title="Short Lnk" />
-    <LinksListFilters />
-    <AddLink />
-    <LinksList />
+    <div className="page-content">
+      <LinksListFilters />
+      <AddLink />
+      <LinksList />
+    </div>
   </>

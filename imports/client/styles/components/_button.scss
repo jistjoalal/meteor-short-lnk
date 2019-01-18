@@ -27,3 +27,11 @@
   background: $button-secondary-bg;
   border: 1px solid $button-secondary-border-color;
 }
+
+.button--inline {
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+  text-transform: none;
+}

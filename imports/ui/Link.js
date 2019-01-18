@@ -7,7 +7,7 @@ import LinksListFilters from './LinksListFilters';
 
 export default Link = props =>
   <>
-    <PrivateHeader title="Your Links" />
+    <PrivateHeader title="Short Lnk" />
     <LinksListFilters />
     <AddLink />
     <LinksList />

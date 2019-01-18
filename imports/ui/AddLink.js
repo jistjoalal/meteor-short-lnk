@@ -24,6 +24,8 @@ export default class AddLink extends Component {
           contentLabel="Add Link"
           onAfterOpen={() => this.refs.url.focus()}
           onRequestClose={this.handleModalClose}
+          className="boxed-view__box"
+          overlayClassName="boxed-view boxed-view--modal"
         >
           <h1>Add Link</h1>
           {!this.state.error ? null

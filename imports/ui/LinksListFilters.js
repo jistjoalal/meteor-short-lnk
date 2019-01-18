@@ -1,0 +1,12 @@
+import React from 'react';
+import { Session } from 'meteor/session';
+
+export default props =>
+  <div>
+    <label>
+      <input type="checkbox" onChange={e => {
+        Session.set('showVisible', !e.target.checked);
+      }} />
+      show hidden links
+    </label>
+  </div>

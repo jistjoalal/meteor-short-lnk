@@ -8,6 +8,7 @@ export default class AddLink extends Component {
     this.state = {
       url: '',
       isOpen: false,
+      error: '',
     };
   }
   render() {
@@ -16,22 +17,35 @@ export default class AddLink extends Component {
         <button onClick={() => this.setState({ isOpen: true })}>
           + Add Link
         </button>
-        <Modal isOpen={this.state.isOpen} contentLabel="Add Link">
-          <p>Add Link</p>
+        <Modal 
+          isOpen={this.state.isOpen} 
+          contentLabel="Add Link"
+          onAfterOpen={() => this.refs.url.focus()}
+          onRequestClose={this.handleModalClose}
+        >
+          <h1>Add Link</h1>
+          {!this.state.error ? null
+          : <p>{this.state.error}</p>}
+
           <form onSubmit={this.onSubmit}>
-            <input type="text" placeholder="URL"
+            <input type="text" placeholder="URL" ref="url"
               value={this.state.url} onChange={this.onChange} />
             <button>Add Link</button>
           </form>
-          <button onClick={() => this.setState({
-            isOpen: false,
-            url: '',
-          })}>
+
+          <button onClick={this.handleModalClose}>
             Cancel 
           </button>
         </Modal>
       </>
     );
+  }
+  handleModalClose = () => {
+    this.setState({
+      isOpen: false,
+      url: '',
+      error: '',
+    });
   }
   onChange = e => {
     this.setState({
@@ -41,16 +55,15 @@ export default class AddLink extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { url } = this.state;
-    if (url) {
-      Meteor.call('links.insert', url, (err, res) => {
-        if (!err) {
-          this.setState({
-            url: '',
-            isOpen: false,
-          });
-        }
-      });
-    }
+    Meteor.call('links.insert', url, (err, res) => {
+      if (!err) {
+        this.handleModalClose();
+      } else {
+        this.setState({
+          error: err.reason,
+        });
+      }
+    });
   }
 }
 

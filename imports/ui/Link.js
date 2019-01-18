@@ -9,6 +9,6 @@ export default Link = props =>
   <>
     <PrivateHeader title="Your Links" />
     <LinksListFilters />
-    <LinksList />
     <AddLink />
+    <LinksList />
   </>

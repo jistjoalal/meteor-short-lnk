@@ -32,7 +32,7 @@ export default class LinksListItem extends Component {
       const time = moment(this.props.lastVisitedAt);
       visitedMessage = `(visited ${time.fromNow()})`
     }
-    return <p>{this.props.visitedCount} {visitMessage} - {visitedMessage}</p>
+    return <p>{this.props.visitedCount} {visitMessage} {visitedMessage}</p>
   }
   render() {
     return (

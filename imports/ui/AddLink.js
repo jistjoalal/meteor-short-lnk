@@ -31,15 +31,17 @@ export default class AddLink extends Component {
           {!this.state.error ? null
           : <p>{this.state.error}</p>}
 
-          <form onSubmit={this.onSubmit}>
+          <form className="boxed-view__form" onSubmit={this.onSubmit}>
             <input type="text" placeholder="URL" ref="url"
               value={this.state.url} onChange={this.onChange} />
-            <button>Add Link</button>
+            <button className="button">Add Link</button>
+            <button type="button" className="button button--secondary"
+              onClick={this.handleModalClose}
+            >
+              Cancel 
+            </button>
           </form>
 
-          <button onClick={this.handleModalClose}>
-            Cancel 
-          </button>
         </Modal>
       </>
     );

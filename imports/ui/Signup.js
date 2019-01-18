@@ -47,7 +47,7 @@ class Signup extends Component {
           <form className="boxed-view__form" onSubmit={this.onSubmit} noValidate>
             <input type="email" ref="email" name="email" placeholder="Email" />
             <input type="password" ref="password" name="password" placeholder="Password" />
-            <button>Create Account</button>
+            <button className="button">Create Account</button>
           </form>
 
           <Link to="/">Login</Link>

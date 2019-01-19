@@ -40,7 +40,7 @@ class Signup extends Component {
     return (
       <div className="boxed-view">
         <div className="boxed-view__box">
-          <h1>Signup</h1>
+          <h1>Join Short Lnk</h1>
 
           { !this.state.error ? null : <p>{this.state.error}</p> }
 
@@ -50,7 +50,7 @@ class Signup extends Component {
             <button className="button">Create Account</button>
           </form>
 
-          <Link to="/">Login</Link>
+          <Link to="/">Have an account?</Link>
         </div>
       </div>
     );
